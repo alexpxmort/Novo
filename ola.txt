@@ -1,2 +1,8 @@
 ola
+<<<<<<< HEAD
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+=======
+OI DE NOVO
+ajajjajajajajajjajaj
+aaaaaaaaaaaaaaaa
+>>>>>>> newupstream/masterdev
