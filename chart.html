@@ -1,0 +1,79 @@
+<!Doctype html>
+<html>
+<head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script> <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="chart.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+<script src="chart.js"></script>
+<body>
+<script>
+//How events are based on type and timestamp is the time that chart is ploting
+
+//Following the code to implement function to plotting data into chart when user click on generate button that create a new chart with the new time spend to generate the two points the chart
+
+//To change color there is a function that returns a color that will be used in the chart point, the style css is the external file, his name chart.css file,to generate a chart the user will have to click on the generate button with the new Data to timestamp .
+
+//It is a form to create chart without complexity that will be verify each event to generate a specific chart to him,when how each event there is a timestamp and a easy way was create a chart with new timestamps when generate button is clicked
+
+$(document).ready(function(){
+  let ctx = document.getElementById("myChart");
+
+
+ $("#btnGenChart").click(function(){
+  function gera_cor(){
+
+    let hexadecimais = '0123456789ABCDEF';
+
+    let cor = '#';
+
+  
+
+    // Pega um número aleatório no array acima
+
+    for (let i = 0; i < 6; i++ )   {
+
+    //E concatena à variável cor
+
+        cor += hexadecimais[Math.floor(Math.random() * 16)];
+
+    }
+
+    return cor;
+
+}
+
+ let ds=[];
+ let data={};
+ let dat=new Date();
+ let ts=dat.getTime();
+ 
+ data.label=["Tempo em que o ponto foi gerado"];
+ let ts_at=dat.getTime();
+ data.data=[ts,ts_at];
+ data.backgroundColor='transparent';
+   data.pointBackgroundColor=gera_cor();
+
+ ds.push(data);
+
+ let lbls=[];
+
+ lbls.push('0:00','0:01');
+
+ let chart = new Chart(ctx, { type: 'line', data: { datasets: ds,
+ labels: lbls,
+ }, 
+   });
+ 
+  });
+  
+});
+</script>
+
+<h1>Challenge Plotting Chart by Alex p</h1>
+<canvas id="myChart" width="400" height="420"></canvas>
+
+<button type="button" id="btnGenChart" class="btn btn-info">Generate Chart</button>
+</body>
+</html>
